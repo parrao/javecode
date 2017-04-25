@@ -1,0 +1,1 @@
+docker run parrao/springbootsample
