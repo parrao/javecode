@@ -98,5 +98,87 @@
   public void m2();
   }
   
+  
+  
+  
+  Inner Class vs Lambda
+  ----------------------
+  Thread t = new Thread(){
+  .......   // we are writing a class that extends Thread class and creating instand of it
+  };
+  
+  Runnable r = new Runnable(){
+     .....    // implementing Runnable interface
+  };
      
+  e.g :
+  interface A{
+  
+  m1();
+  m2();
+  }
+  A a = new A()
+  {
+    public void m1()
+    {
+    }
+    public void m2()
+    {
+    }
+  };
+  
+  Annonmous Inner class != Lambda Expressions
+  Note: if annoymous Inner class implments an interface that contains single abstract methos then only we can replace that anonymous inner class with lambda expressions
+  
+  
+  
+  Default Methods:
+  ---------------
+  until 1.7V : Every methos present inside interface is always: public and abstract
+  e.g: all below methos are equals inside interface
+    void m1();
+    public void m1();
+    abstract void m1();
+    public abstract void m1();
+  
+  Related Methods:
+     1.8 V: default methods _ Static methods
+     1.9 V : private methods
      
+     Variables:
+     ----------
+     public static final
+     
+
+Default Methods | Virtual Extension Method | Defender Method:
+------------------------------------------------------------
+ interface I
+ {
+      public void m1();
+      public void m2();
+      deafult void m3(){                               // without effecting implemnetation classes if we want to add new method to the interface ==> Default Methods
+         System.out.println("Default method");
+      }
+ }
+ 
+ class Test1 implements I {
+  public void m1(){}
+  public void m2(){}
+ }
+ class Test2 implements I {
+  public void m1(){}
+  public void m2(){}
+ }
+  class Test100 implements I {
+  public void m1(){}
+  public void m2(){}
+ }
+
+
+ Notes: Object class methos we can't implment as default methods in interfaces.
+ 
+ Which is costly Class vs Interface  ==> class is costly  becuase interface can't contains constructor, static blocks, instance block
+ 
+ 
+ 
+ 
