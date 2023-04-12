@@ -67,6 +67,36 @@
     }
   }
   
+  Sample2: -- Is valid, because the B extends A and parent is FI so child also considered as FI
+  @FunctionalInterface
+  interface A {
+    public void m1();
+  }
+  @FunctionalInterface
+  interface B extends A {
+ 
+  }
+  
+  
+  Sample3: - In child we overriding the parent abstract method so child is valid FI 
+  @FunctionalInterface
+  interface A {
+    public void m1();
+  }
+  @FunctionalInterface
+  interface B extends A {
+  public void m1();
+  }
+  
+  Sample4: - Invalid, as we are adding one more abstract method to child and we parent alos have one so it going to be two methods. 
+  @FunctionalInterface
+  interface A {
+    public void m1();
+  }
+  @FunctionalInterface
+  interface B extends A {
+  public void m2();
+  }
   
      
      
