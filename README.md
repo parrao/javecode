@@ -130,7 +130,10 @@
   Annonmous Inner class != Lambda Expressions
   Note: if annoymous Inner class implments an interface that contains single abstract methos then only we can replace that anonymous inner class with lambda expressions
   
+  Default Method and Static methods: From 1.8 version inside interface -  without effecting implementation classes if we want to add new methods to the interface(extending interface funtionality) ===> default methods. To define general utility methods inside interface with static
+  ---------------------------------
   
+ Note: The static methods inside interface is not availble to class, even if the class is implementing the interface also. so we can call the methods using Interfaces only. 
   
   Default Methods:
   ---------------
@@ -179,6 +182,8 @@ Default Methods | Virtual Extension Method | Defender Method:
  
  Which is costly Class vs Interface  ==> class is costly  becuase interface can't contains constructor, static blocks, instance block
  
+ Static Methods: In interfaces -> If we want to define only static methods then instead of classes we can go for Interfaces. e.g like utility method  
+ ------------------
  
  
  
