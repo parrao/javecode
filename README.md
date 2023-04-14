@@ -186,4 +186,60 @@ Default Methods | Virtual Extension Method | Defender Method:
  ------------------
  
  
+ Predefined Functional Interfaces: to make lambda expression as common coding activity, these predefined functional interfaces are very helpful
+ ---------------------------------
+ Predicate
+ Function
+ Consumer
+ Supplier
+ ______________
  
+ Two argument Predefined functional interfaces:
+ --------------------------------------------------
+ BiPredicate
+ BiFunction
+ BiConsumer
+ __________________________
+ primitive Functional interfaces
+ --------------------------------
+ IntPredicate
+ IntFunction
+ IntConsumer
+ ........
+ 
+Package: java.unil.function
+
+Predicate(I):  - To do conditional checks by using lambda expression
+----------
+public abstract boolean test(T t)
+
+Predicate Joining:
+-----------------
+e.g: P1 ---> to check whether the number is even or not
+     p2 ---> to check whether the number > 10 or not
+p1.and(p2).test(34)
+p1.or(p2).test(34)
+p1.negate().test(34)   -- Opposite(not), means to check the number is not even.
+ 
+Function: input-> perform some operation and produce result
+---------
+ Function
+ i--> i*i
+ s--> s.length()
+ s--> s+s
+
+interface Function<T,R>
+{
+   public R apply(T t);
+}
+
+
+Consumer:
+---------
+Function Chaining:
+f1.andThen(f2).apply(i)
+First f1 followed by f2
+
+f1.compose(f2).apply(i)
+first f2 and then f1
+
