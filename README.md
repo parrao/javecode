@@ -271,5 +271,35 @@ LongFuntion : can take long type as input
 
 
 
+Primitivre Consumer type
+-----------------------
+IntConsumer
+     void accept(int value)
+        performs this operation on the given argument.
+LongConsumer
+DoubleConsumer
+------------------------------
+ObjDoubleConsumer<T>
+void accept(T t, double value)
+ObjIntConsumer<T>
+ObjLongConsumer<T>
+-------------------------------
  
+Primitive Supplier Type
+-----------------------
+  BooleanSupplier
+    boolean getAsBoolean()
+  IntSupplier
+    int getAsInt()
+  
+  LongSupplier
+      long getAsLong()
+  DoubleSupplier
+      double getAsDouble()
+  --------------------------------
+  
+  
+ UnaryOperator  - When the input and output params type is same
+ -------------
+     UnaryOperator<Integer> f=i->i*l;
   
