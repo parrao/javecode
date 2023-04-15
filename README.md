@@ -209,7 +209,7 @@ Default Methods | Virtual Extension Method | Defender Method:
  
 Package: java.unil.function
 
-Predicate(I):  - To do conditional checks by using lambda expression
+Predicate(I):  - To do conditional checks by using lambda expression.  
 ----------
 public abstract boolean test(T t)
 
@@ -220,6 +220,8 @@ e.g: P1 ---> to check whether the number is even or not
 p1.and(p2).test(34)
 p1.or(p2).test(34)
 p1.negate().test(34)   -- Opposite(not), means to check the number is not even.
+
+### Summary: Take some input and perform some conditional check and returns boolean value--> Predicate
  
 Function: input-> perform some operation and produce result
 ---------
@@ -232,7 +234,7 @@ interface Function<T,R>
 {
    public R apply(T t);
 }
-
+### Summary: Take some input and perform some conditional check and returns the result which is need not be boolean type --> Function
 
 Consumer:
 ---------
@@ -243,3 +245,31 @@ First f1 followed by f2
 f1.compose(f2).apply(i)
 first f2 and then f1
 
+### Summary: Accept some input and perform required operation and not required to return anything ---> Consumer
+
+Supplier:  just supply my required objects and it won't take any input --> Supplier
+inteface Supplier<R>
+{
+  public R get(); 
+}
+
+  
+BiPredicate - two arguments - 
+-----------
+  
+Primitivre Predicate Type
+--------------------------------------------
+IntPredicate p=i->i%2==0;
+DoublePredicate ....
+LongPredicate  .....
+ 
+Primitivre Function type
+-------------------------
+IntFunction  : can take int type as input
+DoubleFunction : can take input type as double return type can be anytype
+LongFuntion : can take long type as input
+
+
+
+ 
+  
