@@ -47,3 +47,6 @@
   List<Integer> l1=l.stream().map(I->I*2).collect(Collector.toList());
   sopln(l1); [0,20,60,10,6]
   
+   
+   
+   
