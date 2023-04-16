@@ -299,7 +299,52 @@ Primitive Supplier Type
   --------------------------------
   
   
- UnaryOperator  - When the input and output params type is same
+ UnaryOperator  - If input and output are same type then we should go for UnaryOperator
+  It is child of Function<T,T>
+  
  -------------
      UnaryOperator<Integer> f=i->i*l;
+       System.out.println(f.apply(f))
+  
+Primitive type of UnaryOperator:
+     IntUnaryOperator f=i->i*i;
+      System.out.println(f.applyAsInt(f))
+    
+     LongUnaryOperator f=i->i*i;
+      System.out.println(f.applyAsLong(f))
+  
+    DoubleUnaryOperator f=i->i*i;
+      System.out.println(f.applyAsDouble(f))
+ 
+  BinaryOperator: 
+  ------------- 
+   It is the child of BiFuntion<T,T,T>
+   BiFunction<String, String,String> f=(s1,s2)->s1+s2;
+  System.out.println(f.apply("Parthi","rao"))
+  
+   BinaryOperator<String,> b=(s1,s2)->s1+s2;
+  System.out.println(b.apply("Parthi","rao"))
+  
+  Primitive Type:
+  ---------------
+   IntBinaryOperator  b=(i1,i2)->i1*i2;
+  System.out.println(b.applyAsInt(10,20));
+  
+  
+  Method and Constructor Reference: The advantage is code reusbility.
+  ================================
+  :: - e.g
+  
+  Note: static and instance method can be reference
+  classname::methodname
+  objectname::methodname
+  Rules:
+    - no of argument and its type must be same
+    - the return type, modifier should not be same. 
+   
+  Test::new(classname::new)  ==> constructor reference 
+  When we should for CR - if FI returns an object
+  
+  
+  
   
