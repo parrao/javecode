@@ -126,3 +126,45 @@ Defining a Thread - in two ways
    - Thread t=new Thread(ThreadGroup g,Runnable r); 
    - Thread t=new Thread(ThreadGroup g,Runnable r,String name); 
    - Thread t=new Thread(ThreadGroup g,Runnable r,String name, long stactsize); 
+
+   ### Set Thread Name:
+    e.g:
+    Thread.currentThread().getName();
+    MyThread t=new MyThread();
+    t.getName();
+    Thread.currentThread().setName("Parthi");
+    
+    ### Thread Priorities
+    
+    Valid Range: 1 to 10 
+    Thread.MIN_PRIORITY -> 1
+    Thread.NORM_PRIORITY -> 5
+    Thread.MAX_PRIORITY -> 10
+    
+    public final int getPriority()
+    public final voif setPriority(int p) // allowed values rang:1 to 10 for other  RE: ILLegalArgumentException
+    
+    Note: The default priority only for main thread 5 but all remaining thread will be inherited from pareent to child.
+    
+         
+   ```
+      class MyThread extends Thread
+      {
+        
+      }
+     // Start the thread
+     class TheadDemo{
+        public static void main(String[] arg){
+         System.out.println(Thread.currentThread().getPriority()); // 5
+         Thead.currentThread().setPriority(8)
+          System.out.println(Thread.currentThread().getPriority()); // 8
+         MyThread t=new MyThread();
+         System.out.println(t.getPriority());  // 8
+         t.setPriority(8);
+         System.out.println(t.getPriority());  // 10 set the child thread priority
+       }
+     }
+     
+   ```
+    
+    
