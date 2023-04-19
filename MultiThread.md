@@ -28,7 +28,7 @@ Defining a Thread - in two ways
 1. By extending Thread Class
 2. By implementing Runnable interface
 
-   By Extending Thread: 
+  ### By Extending Thread: 
    
    ```
       class MyThread extends Thread
@@ -86,5 +86,43 @@ Defining a Thread - in two ways
      
    ```
    
+     ### By implementing Runnable interface: 
+     
+     Runnable(I) --implements--> Thread --extends--->MyThread
+     Runnable(I) --implements--> MyRunnable
+     
+      
+   ```
+      class MyRunnable implements Runnable
+      {
+          // Job of the thread
+          public void run(){
+            for(int i=0;i<10;i++){
+              sopln("Child Thread");
+            }
+          }
+      }
+     // Start the thread
+     class TheadDemo{
+        public static void main(String[] arg){
+          MyRunnable r=new MyRunnable();
+          MyThread t=new MyThread(r);  // runnable object ref
+          t.start(); // start method stats thread calls MyRunnable run() method
+          for(int i=0;i<10;i++){
+                System.out.println("Main Thread");
+          }
+       }
+     }
+     
+   ```
    
+   ### Thread class Constructor:
    
+   - Thread t=new Thread();
+   - Thread t=new Thread(Runnable r);
+   - Thread t=new Thread(String name);
+   - Thread t=new Thread(Runnable r,String name);
+   - Thread t=new Thread(ThreadGroup g,String name);
+   - Thread t=new Thread(ThreadGroup g,Runnable r); 
+   - Thread t=new Thread(ThreadGroup g,Runnable r,String name); 
+   - Thread t=new Thread(ThreadGroup g,Runnable r,String name, long stactsize); 
