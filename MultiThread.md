@@ -23,6 +23,13 @@ Multitasking:
 1. Process based Multitasking -> OS multitasking
 2. Thead based Multitasking -> program level mutitasking
 
+
+### Life cycle of Thread
+  
+     New/Bron  ===================> Ready/Runnable ===================>  Running  =============> Dead
+     MT t=new MT()     t.start()                    If TS allocates                if run() 
+                                                     processor                      Completed
+
 Defining a Thread - in two ways
 ------------------
 1. By extending Thread Class
@@ -166,5 +173,22 @@ Defining a Thread - in two ways
      }
      
    ```
-    
+  ### Prevent a Thread execution by using 
+      Yeild()
+      join()
+      Sleep()
+      
+      Yeild(); -> this methods causes to pause current executing thread to give the chance for waiting thread for same priority. if there no waiting or all waiting thread are low priority then same thread can continue.
+      - If multiple thread waiting with same priority. we can't get which waiting thread will get the priority. Its depends on thread scheduler.
+      - The thread which is yeilded, when it will get the chance once again. It depends on thread scheduler.
+      
+      ProtoType:
+       public static native void yield() -> it is native method
+       
+       State Change(Thread.yield()) ==>  running to ready/runnable state
+      
+      
+      
+      
+      
     
