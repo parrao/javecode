@@ -187,7 +187,44 @@ Defining a Thread - in two ways
        
        State Change(Thread.yield()) ==>  running to ready/runnable state
       
-      
+      ```
+      class MyThreadYD extends Thread{
+	
+     public void run() {
+		for(int i=0;i<10;i++) {
+			Thread.yield();
+			System.out.println("Child Thread");
+		}
+	}
+  }
+
+ public class ThreadYieldDemo {
+
+	public static void main(String[] args) {
+		
+		MyThreadYD t=new MyThreadYD();
+		t.start();
+		for(int i=0;i<10;i++) {
+			System.out.println("Main Thread");
+		}
+		
+	}
+
+  }
+```
+
+Join() -> If a thread a want to wait until completing some other thread then we should go for join method.
+e.g.: if a thead T1 wants to wait until completion of T2 then T1 has to call T2.join
+If T1 executes T2.join then immediately T1 will be entered into waiting state until T2 completes.
+Once T2 completes then T1 can continue its execution.
+
+ProtoType: 
+public final void join()  -> wait until completion of other thread
+public final void join(long mills)  -> wait upto specified time only
+public final void join(long mills, int nanosec)
+
+
+
       
       
       
