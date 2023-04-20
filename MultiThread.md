@@ -219,12 +219,33 @@ If T1 executes T2.join then immediately T1 will be entered into waiting state un
 Once T2 completes then T1 can continue its execution.
 
 ProtoType: 
-public final void join()  -> wait until completion of other thread
-public final void join(long mills)  -> wait upto specified time only
-public final void join(long mills, int nanosec)
+public final void join()  throws InteruptedException -> wait until completion of other thread. This method throws InteruptedException, which is checked exception
+public final void join(long mills) throws InteruptedException -> wait upto specified time only
+public final void join(long mills, int nanosec) throws InteruptedException  -> wait upto specified time only
 
 
 
+									Waiting state
+									==>
+ 									 
+     New/Bron  ===================> Ready/Runnable ===================>  Running  =============> Dead
+     MT t=new MT()     t.start()                    If TS allocates                if run() 
+                                                     processor                      Completed
+
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
+
+flowchart LR
+
+A[Hard] -->|Text| B(Round)
+B --> C{Decision}
+C -->|One| D[Result 1]
+C -->|Two| E[Result 2]
       
       
       
