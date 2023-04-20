@@ -211,7 +211,7 @@ Defining a Thread - in two ways
 	}
 
   }
-```
+	```
 
 Join() -> If a thread a want to wait until completing some other thread then we should go for join method.
 e.g.: if a thead T1 wants to wait until completion of T2 then T1 has to call T2.join
@@ -224,35 +224,14 @@ public final void join(long mills) throws InteruptedException -> wait upto speci
 public final void join(long mills, int nanosec) throws InteruptedException  -> wait upto specified time only
 
 
-
-									Waiting state
-									==>
- 									 
-     New/Bron  ===================> Ready/Runnable ===================>  Running  =============> Dead
-     MT t=new MT()     t.start()                    If TS allocates                if run() 
-                                                     processor                      Completed
-
-```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
-```
-
-flowchart LR
-
-A[Hard] -->|Text| B(Round)
-B --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
+##### Flow for join method:
       
  ```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
+flowchart LR;
+    A(New/Born) -->|t.start| B(ready/runnable)-->|if TS allocates processor | c(running)-->|if run method completes| d(Dead)
+    c --> |t2.join| e(waiting State - blocked for joining)-->|if t2 completes or if time expires or if waiting thread got interrupted |B
+ 
+    
 ```     
       
     
