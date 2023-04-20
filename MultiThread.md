@@ -187,18 +187,18 @@ Defining a Thread - in two ways
        
        State Change(Thread.yield()) ==>  running to ready/runnable state
       
-      ```
+ ```
       class MyThreadYD extends Thread{
 	
-     public void run() {
+      public void run() {
 		for(int i=0;i<10;i++) {
 			Thread.yield();
 			System.out.println("Child Thread");
 		}
 	}
-  }
+     }
 
- public class ThreadYieldDemo {
+    public class ThreadYieldDemo {
 
 	public static void main(String[] args) {
 		
@@ -210,8 +210,8 @@ Defining a Thread - in two ways
 		
 	}
 
-  }
-	```
+    }
+```
 
 Join() -> If a thread a want to wait until completing some other thread then we should go for join method.
 e.g.: if a thead T1 wants to wait until completion of T2 then T1 has to call T2.join
@@ -230,8 +230,37 @@ public final void join(long mills, int nanosec) throws InteruptedException  -> w
 flowchart LR;
     A(New/Born) -->|t.start| B(ready/runnable)-->|if TS allocates processor | c(running)-->|if run method completes| d(Dead)
     c --> |t2.join| e(waiting State - blocked for joining)-->|if t2 completes or if time expires or if waiting thread got interrupted |B
- 
-    
+     
 ```     
-      
+Sample Code:
+------------
+```
+class MyThreadJD extends Thread{
+	
+	public void run() {
+		for(int i=0;i<10;i++) {
+			
+			System.out.println("Child Thread");
+			try {Thread.sleep(2000); 
+			}catch(InterruptedException e) {}
+		}
+	}
+}
+
+public class ThreadJoinDemo {
+
+	public static void main(String[] args) throws InterruptedException {
+	
+		MyThreadJD t=new MyThreadJD();
+		t.start();
+		t.join(); // here main thread wait until child thread completees its execution. Once child thread completes then main thread continure its execution.
+		t.join(10000); //Here main thread wait for 10 sec for child thread and once time expires then main thread continue its execution
+		for(int i=0;i<10;i++) {
+			System.out.println("Main Thread");
+		}
+
+	}
+
+}
+```
     
