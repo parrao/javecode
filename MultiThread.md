@@ -307,5 +307,41 @@ Thread.currentThread().join(); // if a thread calls join methods on same thread 
 ```
 
 ##### Sleep Method = > 
-public static native void sleep(long ms) throws InterrecptedException;
-public static  void sleep(long ms, int ns); throws InterrecptedExceptiom
+public static native void sleep(long ms) throws InterruptedException;
+public static  void sleep(long ms, int ns); throws InterruptedException;
+
+
+##### How a Thread can be Interrupted -> A thread can interrupt, a sleeping or waiting thread by using interrupt of Thread Class
+public void interrupt()
+```
+class MyThreadSD extends Thread{
+	
+ public void run() {
+		
+		try {
+			for(int i=0;i<10;i++) {
+			System.out.println("I am Lazy Thread");
+			Thread.sleep(2000);
+		}
+		}catch(InterruptedException e) {
+			System.out.println("I got Interrupted");
+		}		
+	}
+}
+public class ThreadSleepDemo {
+
+	public static void main(String[] args) {
+		MyThreadSD t= new MyThreadSD();
+		t.start();
+		t.interrupt();
+		System.out.println("End of Main Thread");
+	}
+
+}
+Output: 
+End of Main Thread
+I am Lazy Thread
+I got Interrupted
+```
+
+
