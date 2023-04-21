@@ -343,5 +343,14 @@ End of Main Thread
 I am Lazy Thread
 I got Interrupted
 ```
+Note: Where ever we are calling interrupte method, if the target thread not in sleeping/waiting state then, there is no impact of interrupt call imediatiely. Interrupte call will be until target thread entered into sleeping/waiting state. If the target thread entered into sleeping/waiting state, then imediatiely interrupt target thread.
 
+Comparension Table:
+Property 		 Yield()  	 Join() 	  Sleep()
+
+Purpose			wants to pause  
+Is it overloaded	No		 yes		 yes
+Is it final		No 		 yes		 yes
+Is it throws IE		No		 yes		 yes
+Is it Static		Yes		 No 		 Yes	
 
