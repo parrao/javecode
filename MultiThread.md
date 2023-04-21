@@ -93,7 +93,7 @@ Defining a Thread - in two ways
      
    ```
    
-     ### By implementing Runnable interface: 
+     ##### By implementing Runnable interface: 
      
      Runnable(I) --implements--> Thread --extends--->MyThread
      Runnable(I) --implements--> MyRunnable
@@ -123,7 +123,7 @@ Defining a Thread - in two ways
      
    ```
    
-   ### Thread class Constructor:
+   ##### Thread class Constructor:
    
    - Thread t=new Thread();
    - Thread t=new Thread(Runnable r);
@@ -134,14 +134,14 @@ Defining a Thread - in two ways
    - Thread t=new Thread(ThreadGroup g,Runnable r,String name); 
    - Thread t=new Thread(ThreadGroup g,Runnable r,String name, long stactsize); 
 
-   ### Set Thread Name:
+   ##### Set Thread Name:
     e.g:
     Thread.currentThread().getName();
     MyThread t=new MyThread();
     t.getName();
     Thread.currentThread().setName("Parthi");
     
-    ### Thread Priorities
+    ##### Thread Priorities
     
     Valid Range: 1 to 10 
     Thread.MIN_PRIORITY -> 1
@@ -173,7 +173,7 @@ Defining a Thread - in two ways
      }
      
    ```
-  ### Prevent a Thread execution by using 
+  ##### Prevent a Thread execution by using 
       Yeild()
       join()
       Sleep()
@@ -232,8 +232,8 @@ flowchart LR;
     c --> |t2.join| e(waiting State - blocked for joining)-->|if t2 completes or if time expires or if waiting thread got interrupted |B
      
 ```     
-Sample Code:
-------------
+
+##### Sample Code:
 ```
 class MyThreadJD extends Thread{
 	
@@ -263,4 +263,49 @@ public class ThreadJoinDemo {
 
 }
 ```
-    
+##### Sample Code2: Waiting of Child Thread until completing main Thread.
+
+```
+class MyThreadJD2 extends Thread{
+	
+	static Thread mt;
+	
+ public void run() {
+		
+		try {
+			mt.join();
+		}catch(InterruptedException e) {}
+		for(int i=0;i<10;i++) {
+			System.out.println("Child Thread");
+		}
+	}
+}
+
+public class ThreadJoinDemo2 {
+
+public static void main(String[] args) throws InterruptedException {
+		
+		MyThreadJD2.mt=Thread.currentThread();
+		
+		MyThreadJD2 t=new MyThreadJD2();
+		t.start();
+		for(int i=0;i<10;i++) {
+			System.out.println("Main Thread");
+			Thread.sleep(2000);
+		}
+	}
+}
+```
+##### Note: If main Thread calls join method on child thread object and child Thread calls join method on main thread object then both thread will wait forever and the program will be stucked(this is something like dead lock)
+
+```
+public class ThreadJoinDemo2 {
+public static void main(String[] args) throws InterruptedException {
+Thread.currentThread().join(); // if a thread calls join methods on same thread itself then the program will be stucked. In this case the thread has wait infinite time.
+}
+}
+```
+
+##### Sleep Method = > 
+public static native void sleep(long ms) throws InterrecptedException;
+public static  void sleep(long ms, int ns); throws InterrecptedExceptiom
