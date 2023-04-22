@@ -106,6 +106,7 @@ class DisplaySB{
 	
 	public void wish(String name) {
 		;;;;;;;// 1 lack line of code
+		//synchronized(this) {  -- for class level lock
 		synchronized(this) {
 		for(int i=0;i<10;i++) {
 			System.out.println("Good Morning:");
@@ -149,4 +150,30 @@ public class ThreadSynchonizedBlock {
 }
 
 
+```
+Lock concept applicable for object and class types but not for primitives. Hence we can not primitive type as argument to synchronized block, otherwise we will get compile run error.
+int x=0;
+synchronized(x){   // CE:unexpected type
+
+---
+---
+}
+Race Condition: if multiple thread are operating simultaneously on same java object, then there may be a chance of data inconsistance problem. This is called Race condition. We can overcome this problem by using synchronized keyword.
+Is the thread can acquire multiple locks simultaneously? -> YES 
+
+```
+Class x{
+	public synchronized void m1() {
+	  //  here thread has lock of x object
+	Y  y=new Y();
+	synchronized(y) {
+	     // Here thread had lock of x and y
+	  Z z=new Z();
+	    synchronized(z){
+	     // here thread has lock of x,y,z
+	    }
+	}
+	}
+
+}
 ```
