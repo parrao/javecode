@@ -21,6 +21,7 @@ class x{
 }
 ```
 Lock concept is implemented based on object but not based on method.
+e.g-> In the below example wish method is synchronized and thread t1 and t2 are calling same wish simultaneously but the method is declared as synchronized so one thread at time can execute the wish method.
 ```
 class Display{
 	
@@ -58,5 +59,94 @@ public class ThreadSynchonizedDemo {
 	}
 
 }
+
+```
+Class level lock -> every class in java has unique lock, which is nothing but class level lock.
+
+If a thread execute a static synchronized then a thread requires class level. Once thread got class level then it is allowed execute any static synchronized method of that class.
+
+Sample:
+public synchronized void wish(String name) {
+}
+
+While a thread executing static synchronized method. The remaining threads are not allowed to execute any static synchronized method of that class simultaneously. 
+But remaining threads are allowed execute the following methods simultaneously.
+1. Normal static methods
+2. Synchronized static methods
+3. Normal instance methods
+
+# Synchronized Block -  
+ If very few lines of code required Synchronization then it is not recommended to declared entire method as  synchronized. We have to enclose those few lines of the code using synchronized block.
+
+ We can declare as synchronized block as follows:
+ 1. To get lock of current object:
+      synchronized(this){
+      
+       // if a thread got loack of current object then only it is allowed to execute this area
+      --
+      --
+      }
+2. To get loack of particular object 'b':
+   synchronized(b){
+      
+       // if a thread got loack of particular object 'b' then only it is allowed to execute this area
+      --
+      --
+      }
+4.  To get class level lock:
+      synchronized(Display.class){
+      
+       // if a thread got class level loack of "Display" class, then only it is allowed to execute this area
+      --
+      --
+      }
+ e.g:
+```
+class DisplaySB{
+	
+	public void wish(String name) {
+		;;;;;;;// 1 lack line of code
+		synchronized(this) {
+		for(int i=0;i<10;i++) {
+			System.out.println("Good Morning:");
+			try	{
+				Thread.sleep(2000);
+			}
+			catch(InterruptedException e) {}
+			System.out.println(name);
+		}
+		}
+		;;;;;;;// 1 lack line of code
+	}
+	
+}
+
+class MyThreadSB extends Thread{
+	
+	DisplaySB d;
+	String name;
+	MyThreadSB(DisplaySB d,String name) {
+		this.d =d;
+		this.name =name;
+	}
+	public void run() {
+		d.wish(name);
+	}
+}
+
+public class ThreadSynchonizedBlock {
+
+	public static void main(String[] args) {
+		DisplaySB d=new DisplaySB();
+		//Display d2=new Display();
+		MyThreadSB t1= new MyThreadSB(d,"Dhoni");
+		MyThreadSB t2= new MyThreadSB(d,"Yuvraj");
+		t1.start();
+		t2.start();
+
+	}
+
+}
+
 
 ```
