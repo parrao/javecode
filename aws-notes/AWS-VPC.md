@@ -14,3 +14,6 @@ The RFC1918 address space includes the following networks:
 172.16.0.0 – 172.31.255.255  (172.16/12 prefix)
 192.168.0.0 – 192.168.255.255 (192.168/16 prefix)
 The ten-dot network (10/8) is typically used within large organizations that have thousands of hosts. The 172 and 192 subnets are more common within smaller organizations or home networks. If you are reading this article from home, most probably, your laptop is configured via DHCP with a 192 address. 
+
+#### Security Groups - Its works at Elastic Network Interface( ENI) or Virtual network adoptor level. 
+#### Network Access Controls Lists (N. ACLs) works at VPC subnet level.
