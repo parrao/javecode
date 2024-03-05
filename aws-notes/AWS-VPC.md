@@ -20,9 +20,16 @@ The ten-dot network (10/8) is typically used within large organizations that hav
 
 ![image](https://github.com/parrao/javecode/assets/13145569/fb783e3e-4369-4b6c-ac4b-a47bca31c6b5)
 
-Implied Router:
- #### It is the central VPC routing function,
- #### It connects the different AZ's together and connects the VPC to the internet Gateway
- #### Each subnet will have a route table the router uses to forward traffic within the VPC
- #### The route tables will also have entries to external destimations
+ ### Implied Router:
+ ##### It is the central VPC routing function,
+ ##### It connects the different AZ's together and connects the VPC to the internet Gateway
+ ##### Each subnet will have a route table the router uses to forward traffic within the VPC
+ ##### The route tables will also have entries to external destinations
+
+ ### Route Tables
+ #### You can have up to 200 route tables per VPC
+ #### You can have up to 50 route entries per route table
+ #### Each subnet MUST be associated with only one route table at any given time
+ #### If you do not specify a subnet-to-route-table association, the subnet(when created) will be associated with the main(default) VPC route table.
+ 
  
