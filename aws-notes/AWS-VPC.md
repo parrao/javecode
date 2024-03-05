@@ -31,5 +31,18 @@ The ten-dot network (10/8) is typically used within large organizations that hav
  #### You can have up to 50 route entries per route table
  #### Each subnet MUST be associated with only one route table at any given time
  #### If you do not specify a subnet-to-route-table association, the subnet(when created) will be associated with the main(default) VPC route table.
+ ####  You can change the subnet association to another route table.
+ #### You can also edit the main (dafault) route table if you need, but you can NOT delete the Main(default) route table.
+     -- However, you can make a custom route table manaually become the main route table, then you can delete the former main, as it no longer a main route table
+
+ #### Every route table in a VPC comes with a default rule that allows all VPC subnets to communicate with one another
+     
+     - You can NOT modify or delete this rule
+
+ ## VPC IP Addressing:
+ #### Once the VPC is created, you can NOT change its CIDS block range.
+ #### If you need a different CIDR size, create a new VPC
+ #### The different subnets within a VPC can NOT overlap ( basic TCP/IP rule)
+ #### You can however, expand your VPC CIDR by adding new/extra IP addres ranges.
  
  
